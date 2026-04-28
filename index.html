@@ -8,215 +8,216 @@
 <meta name="keywords" content="ร้านเสื้อ นครสวรรค์, ชุดนักเรียน, ชุดข้าราชการปกติขาว, ชุดครู, รับสั่งตัดเสื้อ">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&family=Prompt:wght@300;400;600&display=swap" rel="stylesheet">
+
 <style>
-:root{
-  --green-main:#006738;
-  --green-light:#e6f2ee;
-  --gray-bg:#f9fafb;
+:root {
+  --primary: #004d2a;   /* เขียวเข้มพรีเมียม */
+  --accent: #d4af37;    /* ทอง Luxury */
+  --dark: #1a1a1a;
+  --light: #f8f9fa;
+  --glass: rgba(255, 255, 255, 0.85);
+  --shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
 }
 
-body{
-  margin:0;
-  font-family:Arial, Helvetica, sans-serif;
-  background:var(--gray-bg);
-  color:#333;
-  line-height:1.6;
+* { box-sizing: border-box; }
+
+/* 🌟 Base Animation Classes */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out;
+}
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-.btn{
-  display:inline-block;
-  margin-top:10px;
-  padding:10px 16px;
-  background:#006738;
-  color:#fff;
-  border-radius:8px;
-  text-decoration:none;
-  font-weight:bold;
+body {
+  margin: 0;
+  font-family: 'Plus Jakarta Sans', 'Prompt', sans-serif;
+  background: #ffffff;
+  color: var(--dark);
+  line-height: 1.7;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
-/* ===== Header ===== */
-header{
-  background:#fff;
-  border-bottom:4px solid var(--green-main);
-  position:sticky;
-  top:0;
-  z-index:1000;
+/* ===== 🟢 Header & Nav (Glassmorphism) ===== */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: var(--glass);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-bottom: 1px solid rgba(0,0,0,0.05);
 }
 
-.header-inner{
-  max-width:1100px;
-  margin:auto;
-  padding:12px 20px;
-  display:flex;
-  align-items:center;
-  gap:18px;
+.header-inner {
+  max-width: 1200px;
+  margin: auto;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.header-inner img{height:70px;}
+.logo-section { display: flex; align-items: center; gap: 15px; }
+.logo-section img { height: 55px; border-radius: 10px; transition: 0.3s; }
+.logo-section img:hover { transform: scale(1.05); }
 
-header h1{
-  margin:0;
-  color:var(--green-main);
-  font-size:26px;
+.header-text h1 { margin: 0; color: var(--primary); font-size: 20px; font-weight: 700; letter-spacing: -0.5px; }
+.header-text p { margin: 0; color: #888; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; }
+
+nav {
+  background: var(--primary);
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 5px;
 }
 
-header p{margin:4px 0 0;color:#555;}
-
-nav{
-  background:var(--green-main);
-  padding:10px;
-  text-align:center;
+nav a {
+  color: #fff;
+  padding: 14px 18px;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  transition: 0.3s;
+  opacity: 0.85;
 }
 
-nav a{
-  color:#fff;
-  margin:0 12px;
-  text-decoration:none;
-  font-weight:bold;
-  white-space:nowrap;
+nav a:hover { opacity: 1; color: var(--accent); background: rgba(255,255,255,0.05); }
+
+/* ===== 🏆 Hero Section (Cinematic Zoom) ===== */
+.hero {
+  height: 85vh;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
 }
 
-nav a:hover{opacity:.85;}
-
-/* ===== Dropdown ===== */
-.dropdown{position:relative;display:inline-block;}
-
-.dropdown-menu{
-  display:none;
-  position:absolute;
-  top:36px;
-  left:0;
-  background:#fff;
-  min-width:260px;
-  box-shadow:0 6px 20px rgba(0,0,0,.15);
-  border-radius:10px;
-  overflow:hidden;
-  z-index:2000;
-  text-align:left;
+.hero-bg {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(rgba(0,30,15,0.6), rgba(0,0,0,0.7)), url('kanokwan 1.jpg') center/cover no-repeat;
+  animation: zoomHero 20s infinite alternate ease-in-out;
+  z-index: -1;
 }
 
-.dropdown-menu a{
-  display:block;
-  padding:12px 16px;
-  color:#333;
-  text-decoration:none;
+@keyframes zoomHero {
+  from { transform: scale(1); }
+  to { transform: scale(1.15); }
 }
 
-.dropdown-menu a:hover{background:var(--green-light);}
-.dropdown:hover .dropdown-menu{display:block;}
+.hero-content { text-align: center; max-width: 800px; padding: 0 20px; }
+.hero-content h2 { 
+  font-size: clamp(2.5rem, 8vw, 4.5rem); 
+  font-weight: 800; 
+  margin: 0; 
+  color: #fff;
+  line-height: 1.1;
+  text-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+.hero-content p { font-size: 1.2rem; margin: 25px 0 40px; color: var(--accent); font-weight: 400; letter-spacing: 1px; }
 
-/* ===== Marquee ===== */
-.marquee-box{
-  background:var(--green-light);
-  overflow:hidden;
-  padding:10px 0;
+/* 💎 Luxury Button Effect */
+.btn {
+  position: relative;
+  display: inline-block;
+  padding: 18px 40px;
+  background: var(--accent);
+  color: var(--dark);
+  border-radius: 100px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 15px;
+  overflow: hidden;
+  transition: 0.4s;
+  box-shadow: 0 15px 30px rgba(212,175,55,0.3);
 }
 
-.marquee-track{
-  display:flex;
-  width:max-content;              /* ⭐ สำคัญมาก */
-  animation: marquee 40s linear infinite;
+.btn::after {
+  content: "";
+  position: absolute;
+  width: 100%; height: 100%;
+  background: rgba(255,255,255,0.3);
+  top: 0; left: -100%;
+  transform: skewX(-25deg);
+  transition: 0.5s;
 }
 
-.marquee-track span{
-  font-weight:bold;
-  font-size:18px;
-  color:var(--green-main);         /* ⭐ แก้สีดำ */
-  padding-right:60px;
-  white-space:nowrap;
+.btn:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(212,175,55,0.5); }
+.btn:hover::after { left: 100%; }
+
+/* ===== 🛡️ Trust Bar (ความน่าเชื่อถือ) ===== */
+.trust-bar {
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  padding: 25px 20px;
+  flex-wrap: wrap;
+  border-bottom: 1px solid #eee;
 }
+.trust-item { font-size: 13px; font-weight: 600; color: var(--primary); display: flex; align-items: center; gap: 8px; }
 
-@keyframes marquee{
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+/* ===== 🏃 Modern Marquee ===== */
+.marquee-box { background: var(--dark); color: var(--accent); padding: 10px 0; overflow: hidden; }
+.marquee-track { display: flex; width: max-content; animation: marquee 35s linear infinite; }
+.marquee-track span { font-weight: 600; padding-right: 100px; font-size: 13px; text-transform: uppercase; letter-spacing: 2px; }
+@keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+/* ===== 📦 Section Styling ===== */
+section { max-width: 1200px; margin: auto; padding: 100px 20px; }
+h2 { font-size: 36px; color: var(--primary); margin-bottom: 50px; position: relative; display: inline-block; }
+h2::after { content: ''; position: absolute; bottom: -10px; left: 0; width: 60px; height: 4px; background: var(--accent); }
+
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; }
+
+/* 💎 Premium Card (Glass Depth) */
+.card {
+  background: #fff;
+  padding: 50px 35px;
+  border-radius: 30px;
+  border: 1px solid #f0f0f0;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+  transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  text-align: center;
 }
+.card:hover { transform: translateY(-20px); box-shadow: var(--shadow); border-color: var(--accent); }
+.card .icon { font-size: 50px; margin-bottom: 25px; display: block; }
 
-
-/* ===== Section ===== */
-section{
-  max-width:1100px;
-  margin:auto;
-  padding:40px 20px;
+/* ===== 📍 Map & Contact ===== */
+.map-container { border-radius: 40px; overflow: hidden; box-shadow: var(--shadow); border: 10px solid #fff; }
+.contact-card {
+  background: linear-gradient(135deg, var(--primary), #002e19);
+  color: #fff;
+  padding: 70px 40px;
+  border-radius: 40px;
+  text-align: center;
 }
+.contact-card a { color: var(--accent); text-decoration: none; font-weight: 700; border-bottom: 1px dashed var(--accent); }
 
-h2{
-  color:var(--green-main);
-  border-left:5px solid var(--green-main);
-  padding-left:12px;
+/* ===== 📱 Floating UI ===== */
+.float-btn {
+  position: fixed; right: 30px; padding: 16px 28px; border-radius: 100px;
+  font-weight: 700; text-decoration: none; z-index: 999; display: flex;
+  align-items: center; gap: 10px; transition: 0.4s; box-shadow: 0 10px 30px rgba(0,0,0,0.2);
 }
+.line-float { bottom: 30px; background: #06c755; color: #fff; }
+.call-float { bottom: 100px; background: #fff; color: var(--primary); }
+.float-btn:hover { transform: scale(1.1) translateY(-5px); }
 
-.highlight{
-  background:var(--green-light);
-  padding:30px;
-  border-radius:14px;
-}
+footer { background: var(--dark); color: #555; text-align: center; padding: 60px 20px; font-size: 13px; }
 
-.highlight img{
-  width:100%;
-  height:auto;
-  border-radius:14px;
-  margin:20px 0;
-}
-
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:20px;
-}
-
-.card{
-  background:#fff;
-  border:1px solid #e5e7eb;
-  padding:22px;
-  border-radius:14px;
-  box-shadow:0 4px 12px rgba(0,0,0,.05);
-}
-
-iframe{
-  width:100%;
-  height:350px;
-  border:0;
-  border-radius:14px;
-}
-
-address a{
-  color:var(--green-main);
-  font-weight:bold;
-  text-decoration:none;
-}
-
-/* ===== Footer ===== */
-footer{
-  background:var(--green-main);
-  color:#fff;
-  text-align:center;
-  padding:22px;
-}
-
-/* ===== Floating ===== */
-.line-float{
-  position:fixed;
-  bottom:20px;
-  right:20px;
-  background:#06c755;
-  color:#fff;
-  padding:15px 22px;
-  border-radius:50px;
-  font-weight:bold;
-  text-decoration:none;
-  z-index:9999;
-}
-
-.call-float{
-  position:fixed;
-  bottom:80px;
-  right:20px;
-  background:var(--green-main);
-  color:#fff;
-  padding:14px 22px;
-  border-radius:50px;
-  text-decoration:none;
-  font-weight:bold;
+@media (max-width: 768px) {
+  .hero-content h2 { font-size: 3rem; }
+  .trust-bar { gap: 20px; }
 }
 </style>
 </head>
@@ -225,143 +226,161 @@ footer{
 
 <header>
   <div class="header-inner">
-    <img src="logo-kanokwan.png" alt="หจก.กนกวรรณ ทับทอง">
-    <div>
-      <h1>หจก.กนกวรรณ ทับทอง</h1>
-      <p>จำหน่ายเสื้อผ้า และ รับสั่งตัดเสื้อทุกประเภท</p>
+    <div class="logo-section">
+      <img src="logo-kanokwan.png" alt="หจก.กนกวรรณ ทับทอง">
+      <div class="header-text">
+        <h1>KANOKWAN TABTHONG</h1>
+        <p>The Master of Tailoring</p>
+      </div>
     </div>
   </div>
 
   <nav>
     <a href="#home">หน้าแรก</a>
     <a href="#about">เกี่ยวกับเรา</a>
-
-    <div class="dropdown">
-      <a href="https://workknw.github.io/kanokwanna-official-shop/">🛒 สั่งซื้อสินค้า</a>
-      <div class="dropdown-menu">
-        <a href="#">ชุดนักเรียนชาย</a>
-        <a href="#">ชุดนักเรียนหญิง</a>
-        <a href="#">ชุดลูกเสือ / เนตรนารี / ยุวกาชาด</a>
-        <a href="#">ชุดอนุบาล</a>
-        <a href="#">ชุดปฏิบัติธรรม</a>
-        <a href="#">ชุดข้าราชการ (ปกติขาว)</a>
-        <a href="#">ชุดครู</a>
-        <a href="#">รองเท้า – ถุงเท้า</a>
-        <a href="#">อุปกรณ์อื่น ๆ</a>
-        <a href="#">เบ็ดเตล็ด</a>
-        <a href="#">บริการงานปัก</a>
-      </div>
-        </div>
-
-       <a href="#location">แผนที่ร้าน</a>
-           <a href="#contact">ติดต่อเรา</a>
-           <a href="https://www.facebook.com/kanokwantubthong" target="_blank" class="top-btn fb">Facebook</a>
-         <a href="https://th.shp.ee/jrCb5Ni" target="_blank" class="top-btn fb">Shopee</a>
-         <a href="https://s.lazada.co.th/s.Pd7IU" target="_blank" class="top-btn fb">Lazada</a>
-           <a href="https://www.tiktok.com/@kanokwan.tabthong" target="_blank" class="top-btn Tiktok">Tiktok</a>
-       <a href="#faq">คำถามที่พบบ่อย</a>
-	<a href="https://workknw.github.io/kanokwanna-official-structure/" target="_blank" class="top-btn fb">โครงสร้างองค์กร</a>
- 
-
-
+    <a href="https://workknw.github.io/kanokwanna-official-shop/">🛒 สั่งซื้อสินค้า</a>
+    <a href="#location">แผนที่ร้าน</a>
+    <a href="#contact">ติดต่อเรา</a>
+    <a href="https://www.facebook.com/kanokwantubthong" target="_blank">Facebook</a>
+    <a href="https://th.shp.ee/jrCb5Ni" target="_blank">Shopee</a>
+    <a href="https://s.lazada.co.th/s.Pd7IU" target="_blank">Lazada</a>
+    <a href="https://www.tiktok.com/@kanokwan.tabthong" target="_blank">Tiktok</a>
+    <a href="https://workknw.github.io/kanokwanna-official-structure/" target="_blank">โครงสร้างองค์กร</a>
   </nav>
 </header>
 
-<!-- ตัวหนังสือวิ่ง -->
 <div class="marquee-box">
   <div class="marquee-track">
-    <span>หจก.กนกวรรณ ทับทอง ยินดีต้อนรับ &nbsp;&nbsp;&nbsp;</span>
-    <span>หจก.กนกวรรณ ทับทอง ยินดีต้อนรับ &nbsp;&nbsp;&nbsp;</span>
-        <span>หจก.กนกวรรณ ทับทอง ยินดีต้อนรับ &nbsp;&nbsp;&nbsp;</span>
-        <span>หจก.กนกวรรณ ทับทอง ยินดีต้อนรับ &nbsp;&nbsp;&nbsp;</span>
-        <span>หจก.กนกวรรณ ทับทอง ยินดีต้อนรับ &nbsp;&nbsp;&nbsp;</span>
-        <span>หจก.กนกวรรณ ทับทอง ยินดีต้อนรับ &nbsp;&nbsp;&nbsp;</span>
-        <span>หจก.กนกวรรณ ทับทอง ยินดีต้อนรับ &nbsp;&nbsp;&nbsp;</span>
-        <span>หจก.กนกวรรณ ทับทอง ยินดีต้อนรับ &nbsp;&nbsp;&nbsp;</span>
-      
+    <span>Excellence in every stitch since 2017 </span>
+        <span>• หจก.กนกวรรณ ทับทอง ยินดีต้องรับ </span>
+    <span>• รับสั่งตัดชุดนักเรียน ชุดข้าราชการ ยูนิฟอร์ม </span>
+    <span>• งานปักคอมพิวเตอร์มาตรฐานสากล </span>
+    <span>• บริการด้วยความจริงใจ ไม่มีขั้นต่ำ </span>
+    <span>Excellence in every stitch since 2017 </span>
   </div>
 </div>
 
-<section id="home">
-  <div class="highlight">
-    <h2>จำหน่ายเสื้อผ้า & รับสั่งตัด นครสวรรค์</h2>
-    <img src="kanokwan 1.jpg" alt="หน้าร้านหจก.กนกวรรณ ทับทอง">
-    <img src="kanokwan 2.jpg" alt="หน้าร้านหจก.กนกวรรณ ทับทอง">
+<section id="home" style="padding:0; max-width:100%;">
+  <div class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content reveal">
+      <h2>KANOKWAN<br>TABTHONG</h2>
+      <p>ยกระดับมาตรฐานชุดยูนิฟอร์มไทย สู่ความพรีเมียมระดับมืออาชีพ</p>
+      <a href="https://workknw.github.io/kanokwanna-official-shop/" class="btn">🛒 เข้าสู่ร้านค้าออนไลน์</a>
+    </div>
   </div>
 </section>
 
+<div class="trust-bar reveal">
+  <div class="trust-item">🚚 ส่งด่วนทั่วประเทศ</div>
+  <div class="trust-item">🧵 งานตัดเย็บประณีต</div>
+  <div class="trust-item">📄 ออกใบเสร็จรับเงินถูกต้อง</div>
+  <div class="trust-item">🏢 หน้าร้านขนาดใหญ่ที่จอดรถสะดวก</div>
+</div>
 
-
-<section id="about">
-  <div class="highlight">
-    <h2>เกี่ยวกับเรา</h2>
-    <img src="kanokwan 3.jpg" alt="หน้าร้านหจก.กนกวรรณ ทับทอง">
+<section id="about" class="reveal">
+  <h2>เกี่ยวกับเรา</h2>
+  <div class="grid">
+    <div style="grid-column: span 1;">
+      <p style="font-size: 1.25rem; color: #666; font-weight: 300;">
+        เราคือผู้เชี่ยวชาญด้านเครื่องนุ่งห่มในจังหวัดนครสวรรค์ 
+        ด้วยประสบการณ์ที่สั่งสมมาอย่างยาวนาน ทำให้เราเข้าใจทุกสรีระ 
+        และคัดสรรเนื้อผ้าที่ดีที่สุด เพื่อความมั่นใจในทุกวันที่คุณสวมใส่
+      </p>
+    </div>
+    <div class="map-container">
+      <img src="kanokwan 3.jpg" alt="บรรยากาศร้าน" style="width:100%; display:block;">
+    </div>
   </div>
-  <p>
-    หจก. กนกวรรณ ทับทอง ให้บริการมายาวนาน
-    เน้นคุณภาพ ความซื่อสัตย์ และความพึงพอใจของลูกค้า
-  </p>
 </section>
 
-<section id="shop-entry">
-  <h2>เลือกซื้อสินค้า</h2>
+<section id="shop-entry" class="reveal">
+  <div style="text-align:center; margin-bottom:60px;">
+    <h2>บริการระดับพรีเมียม</h2>
+  </div>
   <div class="grid">
     <div class="card">
-      <h3>👕 ชุดนักเรียน</h3>
-      <p>สินค้าขายดี พร้อมส่งทันที</p>
-      <a href="https://workknw.github.io/kanokwanna-official-shop/" class="btn">เลือกซื้อ</a>
+      <span class="icon">👕</span>
+      <h3>ชุดนักเรียน</h3>
+      <p>คัดเกรดเนื้อผ้า ทนทาน ทรงสวย ใส่สบาย พร้อมบริการปักชื่อทันที</p>
+      <a href="https://workknw.github.io/kanokwanna-official-shop/" class="btn" style="padding:12px 25px; font-size:13px;">เลือกซื้อสินค้า</a>
     </div>
 
     <div class="card">
-      <h3>🎖️ ชุดข้าราชการ</h3>
-      <p>งานตัดพรีเมียม มีใบเสร็จเบิกได้</p>
-      <a href="https://workknw.github.io/kanokwanna-official-shop/" class="btn">เลือกซื้อ</a>
+      <span class="icon">🎖️</span>
+      <h3>ชุดข้าราชการ</h3>
+      <p>งานตัดเย็บระดับสูง ชุดปกติขาว ชุดครู ทรงเป๊ะตามระเบียบ</p>
+      <a href="https://workknw.github.io/kanokwanna-official-shop/" class="btn" style="padding:12px 25px; font-size:13px;">เลือกซื้อสินค้า</a>
     </div>
 
     <div class="card">
-      <h3>🧵 งานสั่งตัด / ปัก</h3>
-      <p>รับออกแบบและผลิตตามออเดอร์</p>
-      <a href="https://line.me/R/ti/p/@knwtt" class="btn">ปรึกษา</a>
+      <span class="icon">🧵</span>
+      <h3>งานสั่งตัดพิเศษ</h3>
+      <p>รับออกแบบและผลิตยูนิฟอร์ม ไม่มีจำนวนขั้นต่ำในการสั่ง</p>
+      <a href="https://line.me/R/ti/p/@knwtt" class="btn" style="padding:12px 25px; font-size:13px;">ปรึกษาผู้เชี่ยวชาญ</a>
     </div>
   </div>
 </section>
-<section id="location">
+
+<section id="location" class="reveal">
   <h2>แผนที่ร้าน</h2>
-  <iframe
-  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3841.286649139222!2d100.1082204!3d15.682930199999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e04e159218e823%3A0xbb2afbd01f8d0765!2z4Lij4LmJ4Liy4LiZIOC4q-C4iOC4gS4g4LiB4LiZ4LiB4Lin4Lij4Lij4LiTIOC4l-C4seC4muC4l-C4reC4hw!5e0!3m2!1sth!2sth!4v1765940904719!5m2!1sth!2sth"
-  width="100%"
-  height="350"
-  style="border:0; border-radius:10px;"
-  allowfullscreen=""
-  loading="lazy"
-  referrerpolicy="no-referrer-when-downgrade">
-</iframe>
-
-  <p>📍 ใกล้ตลาดศรีนคร • 🚗 มีที่จอดรถมากกว่า 10 คัน</p>
+  <div class="map-container">
+    <iframe src="http://googleusercontent.com/maps.google.com/3" width="100%" height="500" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+  </div>
 </section>
 
-<section id="contact">
-  <h2>ติดต่อเรา</h2>
-  <address>
-    📞 โทร : <a href="tel:056881529">056-881-529</a><br>
-    💬 LINE: @800gljgf<br>
-    📘 Facebook: <a href="https://www.facebook.com/kanokwantubthong" target="_blank">หจก.กนกวรรณ ทับทอง</a><br>
-        ⏰ เปิดบริการทุกวัน : 07:30 – 19:00
-  </address>
+<section id="contact" class="reveal" style="padding-top:0;">
+  <div class="contact-card">
+    <h2 style="color:var(--accent); border:none; padding:0;">ติดต่อเรา</h2>
+    <p style="font-size:24px; font-weight:600; margin:20px 0;">โทรสอบถาม: <a href="tel:056881529">056-881-529</a></p>
+    <p style="opacity:0.8;">LINE Official ID: <b>@800gljgf</b></p>
+    <p style="opacity:0.8;">เปิดให้บริการทุกวัน: 07:30 – 20:00 น.</p>
+    <div style="margin-top:40px;">
+        <a href="https://www.facebook.com/kanokwantubthong" target="_blank" class="btn" style="background:#fff; color:var(--primary);">แชทผ่าน FACEBOOK</a>
+    </div>
+  </div>
 </section>
 
-<section id="faq">
-  <h2>คำถามที่พบบ่อย</h2>
-  <div class="card"><strong>Q:</strong> มีที่จอดรถไหม? <br>A: มีค่ะ สะดวก</div>
-  <div class="card"><strong>Q:</strong> สั่งขั้นต่ำกี่ตัว? <br>A: ไม่มีขั้นต่ำ</div>
+<section id="faq" class="reveal">
+  <div style="text-align:center;">
+    <h2>คำถามที่พบบ่อย</h2>
+  </div>
+  <div class="grid">
+    <div class="card" style="text-align:left; padding:30px;">
+      <strong style="color:var(--primary); font-size:18px;">มีที่จอดรถไหม?</strong>
+      <p style="margin-top:10px;">มีครับ ร้านของเราอยู่ใกล้ตลาดศรีนคร ที่จอดรดมากกว่า 10 คัน</p>
+    </div>
+    <div class="card" style="text-align:left; padding:30px;">
+      <strong style="color:var(--primary); font-size:18px;">สั่งตัดจำนวนน้อยรับทำไหม?</strong>
+      <p style="margin-top:10px;">รับครับ แม้เพียงตัวเดียวเราก็ตั้งใจทำให้ดีที่สุด</p>
+    </div>
+  </div>
 </section>
 
 <footer>
-© 2026 หจก. กนกวรรณ ทับทอง
+  <p>© 2026 KANOKWAN TABTHONG LIMITED PARTNERSHIP</p>
+  <p style="margin-top:10px; letter-spacing:1px; opacity:0.4;">CRAFTED FOR EXCELLENCE IN NAKHON SAWAN</p>
 </footer>
 
-<a href="https://line.me/R/ti/p/@800gljgf" class="line-float" target="_blank">แชท LINE</a>
-<a href="tel:056881529" class="call-float">โทรร้าน</a>
+<a href="tel:056881529" class="float-btn call-float">📞 โทรร้าน</a>
+<a href="https://line.me/R/ti/p/@800gljgf" class="float-btn line-float" target="_blank">💬 แชท LINE</a>
+
+<script>
+  function reveal() {
+    var reveals = document.querySelectorAll(".reveal");
+    for (var i = 0; i < reveals.length; i++) {
+      var windowHeight = window.innerHeight;
+      var elementTop = reveals[i].getBoundingClientRect().top;
+      var elementVisible = 100;
+      if (elementTop < windowHeight - elementVisible) {
+        reveals[i].classList.add("active");
+      }
+    }
+  }
+  window.addEventListener("scroll", reveal);
+  // รันครั้งแรกเผื่ออยู่อันบนสุด
+  reveal();
+</script>
 
 </body>
 </html>
