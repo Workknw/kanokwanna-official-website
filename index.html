@@ -77,6 +77,7 @@ header {
 
 nav {
   display: flex;
+  justify-content: center;
   gap: 8px;
   padding: 10px;
   background: rgba(31, 122, 99, 0.03);
@@ -260,6 +261,15 @@ footer { background: #fdfdfd; color: var(--text-light); text-align: center; padd
   .hero-content { padding: 40px 20px; }
   .soft-box { padding: 40px 20px; }
   section { padding: 60px 20px; }
+  nav {
+    overflow-x: auto;
+    white-space: nowrap;
+    justify-content: flex-start;
+  }
+
+  .nav-link {
+    flex: 0 0 auto;
+  }
 }
 </style>
 </head>
