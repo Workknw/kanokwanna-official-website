@@ -77,10 +77,13 @@ header {
 
 nav {
   display: flex;
-  justify-content: center;
-  gap: 5px;
-  padding: 8px 10px;
+  gap: 8px;
+  padding: 10px;
   background: rgba(31, 122, 99, 0.03);
+
+  overflow-x: auto;       
+  white-space: nowrap;     
+  -webkit-overflow-scrolling: touch;
 }
 
 .nav-link {
@@ -91,6 +94,7 @@ nav {
   font-weight: 600;
   border-radius: 50px;
   transition: 0.3s;
+  flex: 0 0 auto;
 }
 
 .nav-link:hover { background: var(--white); color: var(--mint); }
