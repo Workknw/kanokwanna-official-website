@@ -1,2 +1,2 @@
 # Kanokwan Tabthong-official-website
-Official website of Kanokwanna Thubthong Partnership (หจก.กนกวรรณ ทับทอง)
+Official website of Kanokwan Tubthong Partnership (หจก.กนกวรรณ ทับทอง)
